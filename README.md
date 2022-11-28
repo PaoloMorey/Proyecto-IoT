@@ -8,7 +8,7 @@ docker-compose up -d
 
 ### Activar el env y actualizar
 ```python
-cd subscriber && conda env create -f environment.yml && conda activate sub_mosquit && make pip-tools 
+conda env create -f environment.yml && conda activate sub_mosquit && make pip-tools 
 ```
 
 ### Correr sub
