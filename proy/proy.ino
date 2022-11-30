@@ -27,7 +27,7 @@ void setup()
   int total = 10;
   randomSeed(total);
   Serial.begin(9600),
-      pinMode(trig, OUTPUT);
+  pinMode(trig, OUTPUT);
   pinMode(echo, INPUT);
   currentCar = false;
   contCars = 0;
@@ -94,11 +94,14 @@ void incrementCars()
   digitalWrite(trig, LOW);
 
   timeInterval = pulseIn(echo, HIGH);
-  // distance = timeInterval / 58.4;
-  distance = random(20);
+  distance = timeInterval / 58.4;
+  // distance = random(20);
   // Serial.println(currentCar);
-  if (distance <= 10)
-    contCars++;
+  if (distance <= 10){
+    if (!currentCar) contCars++;
+    currentCar = true;
+  } else currentCar = false;
+  
   String distStr = "Distancia: " + String(distance) + " cm";
   Serial.println(contCars);
 }
